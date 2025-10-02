@@ -1,47 +1,64 @@
 ---
-title: "Active monitoring of excavation robots through multi-rate sensor fusion"
-summary: "Conference contribution demonstrating a perception stack that blends onboard proprioception with external sensing to stabilise excavation robots in cluttered sites."
+title: "Designing, Prototyping, and Controlling a Portable Rehabilitation Robot for the Shoulder Physiotherapy and Training"
+summary: "ICRoM 2019 paper presenting a 5-DOF wearable shoulder rehabilitation robot with EMG-informed control that enables at-home physiotherapy."
 venue: "2019 7th RSI International Conference on Robotics and Mechatronics (ICRoM)"
 year: 2019
 authors:
+  - Mohamad Ali Soleimani
+  - Hassan Zohoor
+  - AliReza Fallah Yakhdani
   - Mohammad Heravi
-  - Firstname Lastname
-  - Second Researcher
-  - Third Collaborator
+  - Esmaeil Mohammadi
 tags:
   - Conference
-  - Field Robotics
+  - Rehabilitation Robotics
+  - Wearable Mechatronics
 links:
   - label: "IEEE Xplore"
-    url: "https://doi.org/10.1109/icrom48714.2019.9071844"
-highlight: "Sensor fusion pipeline increases trajectory stability by 22% during cluttered excavation."
+    url: "https://doi.org/10.1109/ICRoM48714.2019.9071844"
 doi: "10.1109/icrom48714.2019.9071844"
+highlight: "Wearable 5-DOF exoskeleton with EMG-informed safety control expanded a patient’s shoulder mobility from 20° to 75° after 15 at-home sessions."
 ---
+## Publication details
 
-## Motivation
+- Conference: 2019 7th RSI International Conference on Robotics and Mechatronics (ICRoM)
+- Conference dates: 20–21 November 2019
+- Location: Tehran, Iran
+- Publisher: IEEE
+- Added to IEEE Xplore: 20 April 2020
 
-Industrial excavation platforms often operate amidst dust, occlusions, and reflective surfaces. Our ICRoM 2019 paper addresses the loss of localisation that follows when relying on a single sensing modality.
+## Summary
 
-## Approach
+Stroke and accident survivors often lose shoulder mobility, but many rehabilitation exoskeletons stay confined to clinics. This paper introduces a portable five-degree-of-freedom wearable robot tailored for in-home physiotherapy sessions. The mechanism adapts to different body sizes, and the control loop leverages surface electromyography to modulate assistance while enforcing user safety.
 
-- Fuse proprioceptive encoders, IMUs, and external depth sensors with a factor-graph backbone.
-- Insert physics priors—tool-ground contact and actuator limits—directly inside the optimiser to reduce drift.
-- Provide an adaptive resampling strategy that keeps computation bounded even when the perception graph grows.
+## Technical highlights
 
-## Key results
+- Adjustable 5-DOF kinematic design balances shoulder coverage with donning convenience for everyday use.
+- EMG-driven proportional control algorithm modulates actuation support in real time while enforcing safety limits.
+- Prototype integrates compact actuators, on-board sensing, and embedded electronics in a form factor suitable for domestic environments.
 
-- Closed-loop excavation maintains stability across cluttered scenes, improving trajectory adherence by **22%** compared with a Kalman-only baseline.
-- The multi-rate fusion keeps latency under **45 ms**, enabling responsive actuation.
-- Benchmarked the system on both indoor mock-ups and live excavation trials with heavy dust.
+## Evaluation snapshot
+
+- Single-subject home-therapy case study covering 15 sessions.
+- Shoulder range of motion increased from 20° pre-therapy to 75° post-programme using the portable device.
+- Demonstrated feasibility of conducting supervised physiotherapy outside lab settings.
+
+## Keywords
+
+- Shoulder rehabilitation
+- Wearable robotics
+- EMG control
+- Portable exoskeleton
+- Physiotherapy automation
 
 ## BibTeX
 
 ```bibtex
-@inproceedings{Heravi2019ICRoM,
-  title={Active monitoring of excavation robots through multi-rate sensor fusion},
-  author={Heravi, Mohammad and Lastname, Firstname and Researcher, Second and Collaborator, Third},
+@inproceedings{Soleimani2019ICRoM,
+  title={Designing, Prototyping, and Controlling a Portable Rehabilitation Robot for the Shoulder Physiotherapy and Training},
+  author={Soleimani, Mohamad Ali and Zohoor, Hassan and Fallah Yakhdani, AliReza and Heravi, Mohammad and Mohammadi, Esmaeil},
   booktitle={2019 7th RSI International Conference on Robotics and Mechatronics (ICRoM)},
   year={2019},
-  doi={10.1109/icrom48714.2019.9071844}
+  doi={10.1109/ICRoM48714.2019.9071844}
 }
 ```
