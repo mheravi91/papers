@@ -17,7 +17,6 @@ links:
   - label: "IEEE Xplore"
     url: "https://doi.org/10.1109/ICRoM48714.2019.9071844"
 doi: "10.1109/icrom48714.2019.9071844"
-highlight: "Wearable 5-DOF exoskeleton with EMG-informed safety control expanded a patient’s shoulder mobility from 20° to 75° after 15 at-home sessions."
 ---
 ## Publication details
 

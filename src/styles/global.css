@@ -272,6 +272,114 @@ main {
   gap: 16px;
 }
 
+.about-section {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 48px 52px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+  gap: 36px;
+  align-items: start;
+}
+
+.about-summary p {
+  margin: 0 0 18px;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.about-resume {
+  background: rgba(48, 79, 254, 0.08);
+  border-radius: var(--radius-md);
+  padding: 24px 26px;
+  border: 1px solid rgba(48, 79, 254, 0.18);
+  box-shadow: 0 18px 42px -32px rgba(31, 45, 110, 0.55);
+}
+
+.about-resume h2 {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(31, 45, 110, 0.72);
+}
+
+.resume-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.resume-list strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.contact-section {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 48px 52px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.contact-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 20px 22px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 22px 46px -32px rgba(15, 23, 42, 0.55);
+  color: var(--text);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.2s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(48, 79, 254, 0.22);
+  box-shadow: 0 30px 56px -34px rgba(48, 79, 254, 0.55);
+}
+
+.contact-card strong {
+  font-size: 1rem;
+}
+
+.contact-card p {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.contact-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: var(--accent-contrast);
+  box-shadow: 0 18px 38px -28px rgba(31, 45, 110, 0.55);
+}
+
 .timeline {
   display: grid;
   gap: 24px;
@@ -457,6 +565,16 @@ main {
 
   .page-header {
     padding: 36px;
+  }
+
+  .about-section,
+  .contact-section {
+    padding: 36px 24px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
 }
 .featured-links span {

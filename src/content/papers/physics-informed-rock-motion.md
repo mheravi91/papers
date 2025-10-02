@@ -19,7 +19,6 @@ links:
   - label: "Creative Commons License"
     url: "http://creativecommons.org/licenses/by/4.0/"
 featured: true
-highlight: "Journal pre-proof demonstrates a physics-informed neural network with kinematic consistency that keeps multi-horizon rock-motion forecasts within excavation tolerances."
 ---
 
 ## Publication details
