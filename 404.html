@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Redirecting…</title>
+<link rel="stylesheet" href="/static/style.css">
+<body>
+<div class="card">
+  <h1>Redirecting to DOI…</h1>
+  <p>If you are not redirected automatically, <a id="link" href="#">click here</a>.</p>
+</div>
+<script>
+  (function() {
+    var target = "https://doi.org" + window.location.pathname;
+    document.getElementById("link").href = target;
+    // Use replace() to avoid creating an extra entry in browser history
+    window.location.replace(target);
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Dependency caches and build outputs
+node_modules/
+dist/
+build/
+.cache/
+tmp/
+*.log
+
+# Editor directories and project settings
+.vscode/
+.idea/
+
+# Environment files
+.env
+.env.*
