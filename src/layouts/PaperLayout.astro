@@ -50,37 +50,56 @@ const structuredData = {
   structuredData={structuredData}
 >
   <main class="page-main page-main--article">
-    <section class="page-header">
-      <span class="section-heading">Scholarly work</span>
-      <h1>{title}</h1>
-      <p class="hero-description">{summary}</p>
-      <ul class="meta-list">
-        <li><strong>Year</strong> {year}</li>
-        <li><strong>Venue</strong> {venue}</li>
-        <li><strong>Authors</strong> {authors.join(' · ')}</li>
-        {doi && (
-          <li><strong>DOI</strong> <a href={`https://doi.org/${doi}`} target="_blank" rel="noopener">{doi}</a></li>
+    <section class="paper-hero">
+      <div class="paper-hero-main">
+        <span class="section-heading">Scholarly work</span>
+        <h1>{title}</h1>
+        <ul class="paper-authors">
+          {authors.map((author) => (
+            <li>{author}</li>
+          ))}
+        </ul>
+        <p class="paper-summary">{summary}</p>
+        {tags.length > 0 && (
+          <div class="featured-links">
+            {tags.map((tag) => (
+              <span>{tag}</span>
+            ))}
+          </div>
         )}
-      </ul>
-      {tags.length > 0 && (
-        <div class="featured-links">
-          {tags.map((tag) => (
-            <span>{tag}</span>
-          ))}
-        </div>
-      )}
-      {primaryLink && (
-        <div class="hero-actions">
-          <a class="btn btn-primary" href={primaryLink.url} target={primaryLink.external !== false ? '_blank' : undefined} rel={primaryLink.external !== false ? 'noopener' : undefined}>
-            {primaryLink.label}
-          </a>
-          {secondaryLinks.map((link) => (
-            <a class="btn btn-secondary" href={link.url} target={link.external !== false ? '_blank' : undefined} rel={link.external !== false ? 'noopener' : undefined}>
-              {link.label}
-            </a>
-          ))}
-        </div>
-      )}
+      </div>
+      <aside class="paper-hero-meta">
+        <dl class="paper-meta-list">
+          <div class="paper-meta-row">
+            <dt>Venue</dt>
+            <dd>{venue}</dd>
+          </div>
+          <div class="paper-meta-row">
+            <dt>Year</dt>
+            <dd>{year}</dd>
+          </div>
+          {doi && (
+            <div class="paper-meta-row">
+              <dt>DOI</dt>
+              <dd><a href={`https://doi.org/${doi}`} target="_blank" rel="noopener">{doi}</a></dd>
+            </div>
+          )}
+          {links.length > 0 && (
+            <div class="paper-meta-row paper-meta-links">
+              <dt>Access</dt>
+              <dd>
+                <div class="paper-links">
+                  {[primaryLink, ...secondaryLinks].filter(Boolean).map((link) => (
+                    <a class={`paper-link ${link === primaryLink ? 'paper-link--primary' : ''}`} href={link.url} target={link.external !== false ? '_blank' : undefined} rel={link.external !== false ? 'noopener' : undefined}>
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </dd>
+            </div>
+          )}
+        </dl>
+      </aside>
     </section>
 
     <section class="rich-text">
