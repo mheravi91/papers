@@ -302,7 +302,71 @@ main {
 
 .footer-nav {
   display: inline-flex;
-  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px 10px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 14px 32px -24px rgba(15, 23, 42, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.footer-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 38px -26px rgba(48, 79, 254, 0.55);
+  border-color: rgba(48, 79, 254, 0.24);
+  color: var(--accent-dark);
+}
+
+.footer-link-label {
+  white-space: nowrap;
+}
+
+.footer-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: var(--accent-contrast);
+  box-shadow: 0 12px 24px -18px rgba(31, 45, 110, 0.5);
+}
+
+.footer-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.footer-link--email .footer-icon {
+  background: linear-gradient(135deg, #6a7bff, #435dff);
+}
+
+.footer-link--scholar .footer-icon {
+  background: linear-gradient(135deg, #2dd4bf, #0ea5e9);
+}
+
+.footer-link--orcid .footer-icon {
+  background: linear-gradient(135deg, #9be15d, #3fa34d);
+}
+
+.footer-link--website .footer-icon {
+  background: linear-gradient(135deg, #f97316, #facc15);
+}
+
+.footer-link--github .footer-icon {
+  background: linear-gradient(135deg, #111827, #1f2937);
 }
 
 .stats-grid {
