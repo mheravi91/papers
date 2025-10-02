@@ -1,5 +1,6 @@
+---
 title: "Physics-informed data-driven modeling of rock motion dynamics in excavation using a high-fidelity simulator"
-summary: "Physics-informed neural network trained on 200 high-fidelity excavation simulations delivers accurate rock-motion forecasts across soils and horizons."
+summary: "Open-access journal pre-proof describing a physics-informed neural network surrogate trained on 200 high-fidelity excavation simulations to forecast rock motion with physically consistent constraints."
 venue: "Simulation Modelling Practice and Theory"
 year: 2025
 authors:
@@ -9,7 +10,7 @@ authors:
 tags:
   - Journal
   - Physics-informed ML
-  - Robotics
+  - Simulation
 links:
   - label: "Official DOI"
     url: "https://doi.org/10.1016/j.simpat.2025.103208"
@@ -18,8 +19,14 @@ links:
   - label: "Creative Commons License"
     url: "http://creativecommons.org/licenses/by/4.0/"
 featured: true
-highlight: "Open-access PINN with kinematic constraints keeps excavation rock-motion predictions within target tolerance up to 20 steps ahead."
+highlight: "Journal pre-proof demonstrates a physics-informed neural network with kinematic consistency that keeps multi-horizon rock-motion forecasts within excavation tolerances."
 ---
+
+## Publication details
+
+- Article number: 103208 (In Press, Journal Pre-proof)
+- Available online: 25 September 2025
+- License: CC BY 4.0
 
 ## Abstract (publisher)
 
