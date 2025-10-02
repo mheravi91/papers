@@ -160,18 +160,6 @@ main.page-main > .page-header {
   box-shadow: 0 12px 24px -16px rgba(15, 23, 42, 0.4);
 }
 
-.site-nav {
-  display: inline-flex;
-  gap: 20px;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-.site-nav a {
-  color: inherit;
-  font-weight: 500;
-}
-
 .hero {
   display: grid;
   gap: 18px;
@@ -562,18 +550,53 @@ main.page-main > .page-header {
   font-weight: 600;
 }
 
-.about-actions {
-  margin-top: 24px;
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.about-links {
+  margin-top: 36px;
+  display: grid;
+  gap: 18px;
 }
 
-.about-actions {
-  margin-top: 24px;
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.about-links h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(31, 45, 110, 0.72);
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.link-card {
+  display: grid;
+  gap: 6px;
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 18px 36px -28px rgba(31, 45, 110, 0.28);
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.link-card:hover {
+  box-shadow: 0 26px 54px -32px rgba(31, 45, 110, 0.48);
+  transform: translateY(-3px);
+}
+
+.link-label {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+}
+
+.link-meta {
+  font-size: 0.95rem;
+  color: var(--text-muted);
 }
 
 .contact-section {

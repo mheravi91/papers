@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
+import PaperCard from '~/components/PaperCard.astro';
+import { getCollection } from 'astro:content';
+
+const papers = await getCollection('papers');
+const orderedPapers = [...papers].sort((a, b) => b.data.year - a.data.year);
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -16,7 +21,7 @@ const structuredData = {
     'https://orcid.org/0009-0007-2582-083X',
     'https://mheravi.ir',
     'https://github.com/mheravi91',
-    'https://www.linkedin.com/in/mheravi'
+    'https://www.linkedin.com/in/mheravi',
   ],
 };
 ---
@@ -24,6 +29,8 @@ const structuredData = {
   title="Mohammad Heravi — Robotics & Simulation Research"
   description="Research portfolio for Mohammad Heravi, highlighting robotics, simulation, and autonomous excavation contributions."
   structuredData={structuredData}
+  showHeader={false}
+  showFooter={false}
 >
   <main class="page-main">
     <section class="section-shell about-section" id="about">
@@ -32,18 +39,20 @@ const structuredData = {
           <img src="/profile.jpg" alt="Portrait of Mohammad Heravi" loading="lazy" />
         </div>
         <div class="about-meta">
-          <img class="about-logo" src="/logo.svg" alt="Personal logo" loading="lazy" />
+          <img class="about-logo" src="/logo.png" alt="Mohammad Heravi logo" loading="lazy" />
           <h1 class="section-title">Mohammad Heravi</h1>
-          <p class="about-tagline">Robotics &amp; Simulation Researcher</p>
+          <p class="about-tagline">Doctoral Researcher &amp; Robotics Engineer</p>
         </div>
       </div>
       <div class="about-grid">
         <div class="about-summary">
           <p>
-            Mohammad Heravi builds dependable autonomy for earthmoving and industrial robotics by pairing physics-based simulation with machine learning and robust control. He is currently a doctoral researcher at Tampere University, focusing on physics-informed models that bridge high-fidelity simulators and field deployments.
+            I'm a PhD student and doctoral researcher in Automation Technology and Mechanical Engineering at
+            <a href="https://www.tuni.fi/en/people/mohammad-heravi" target="_blank" rel="noopener">Tampere University</a>,
+            where I explore physics-informed simulation and intelligent machines for dependable field robotics.
           </p>
           <p>
-            His work spans excavation automation, wearable rehabilitation devices, and sensor fusion pipelines that remain reliable in harsh environments. Mohammad collaborates closely with industry partners to translate prototypes into operational systems and enjoys mentoring multidisciplinary teams.
+            My work blends high-fidelity modelling, sensing, and control to make heavy machinery safer and more autonomous while keeping engineers and operators closely in the loop.
           </p>
         </div>
         <div class="about-resume">
@@ -56,9 +65,37 @@ const structuredData = {
           </ul>
         </div>
       </div>
-      <div class="about-actions">
-        <a class="btn btn-primary" href="/papers">Browse papers</a>
-        <a class="btn btn-secondary" href="/contact">Get in touch</a>
+
+      <div class="about-links">
+        <h2>Links</h2>
+        <div class="link-grid">
+          <a class="link-card" href="https://scholar.google.com/citations?user=DYUEpmsAAAAJ&hl=en" target="_blank" rel="noopener">
+            <span class="link-label">Google Scholar</span>
+            <span class="link-meta">Citations &amp; publications</span>
+          </a>
+          <a class="link-card" href="https://orcid.org/0009-0007-2582-083X" target="_blank" rel="noopener">
+            <span class="link-label">ORCID</span>
+            <span class="link-meta">0009-0007-2582-083X</span>
+          </a>
+          <a class="link-card" href="mailto:mohammad.heravi@tuni.fi">
+            <span class="link-label">Email</span>
+            <span class="link-meta">mohammad.heravi@tuni.fi</span>
+          </a>
+          <a class="link-card" href="https://github.com/mheravi91" target="_blank" rel="noopener">
+            <span class="link-label">GitHub</span>
+            <span class="link-meta">@mheravi91</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell papers-section" id="papers">
+      <span class="section-heading">Publications</span>
+      <h2 class="section-title">Selected Papers</h2>
+      <div class="paper-grid">
+        {orderedPapers.map((entry) => (
+          <PaperCard entry={entry} />
+        ))}
       </div>
     </section>
   </main>
