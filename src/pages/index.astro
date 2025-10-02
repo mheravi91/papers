@@ -1,10 +1,5 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
-import PaperCard from '~/components/PaperCard.astro';
-import { getCollection } from 'astro:content';
-
-const papers = await getCollection('papers');
-const orderedPapers = [...papers].sort((a, b) => b.data.year - a.data.year);
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -26,89 +21,21 @@ const structuredData = {
 };
 ---
 <BaseLayout
-title="Mohammad Heravi — Robotics & Simulation Research"
-description="Professional research homepage for Mohammad Heravi, featuring work on physics-informed learning, excavation autonomy, and robotics publications."
-structuredData={structuredData}
-showHeader={false}
+  title="Mohammad Heravi — Robotics & Simulation Research"
+  description="Research portfolio for Mohammad Heravi, highlighting robotics, simulation, and autonomous excavation contributions."
+  structuredData={structuredData}
 >
   <main>
-    <section class="section-shell about-section" id="about">
-      <h1 class="section-title">Mohammad Heravi</h1>
-      <div class="about-grid">
-        <div class="about-summary">
-          <p>
-            Mohammad Heravi builds dependable autonomy for earthmoving and industrial robotics by pairing physics-based simulation with machine learning and robust control. He is currently a doctoral researcher at Tampere University, focusing on physics-informed models that bridge high-fidelity simulators and field deployments.
-          </p>
-          <p>
-            His work spans excavation automation, wearable rehabilitation devices, and sensor fusion pipelines that remain reliable in harsh environments. Mohammad collaborates closely with industry partners to translate prototypes into operational systems.
-          </p>
-        </div>
-        <div class="about-resume">
-          <h2>Snapshot</h2>
-          <ul class="resume-list">
-            <li><strong>Tampere University</strong> — Doctoral Researcher in Intelligent Machines &nbsp;·&nbsp; 2021–present</li>
-            <li><strong>University of Tehran</strong> — M.Sc. in Mechanical Engineering &nbsp;·&nbsp; 2019</li>
-            <li><strong>Research focus</strong> — Physics-informed learning, excavation autonomy, wearable robotics</li>
-            <li><strong>Selected contributions</strong> — Open-access PINN models for rock-motion forecasting; EMG-driven rehabilitation exoskeleton design</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-shell" id="papers">
-      <h2 class="section-title">Papers</h2>
-      <div class="paper-grid">
-        {orderedPapers.map((entry) => (
-          <PaperCard entry={entry} />
-        ))}
-      </div>
-    </section>
-
-    <section class="section-shell contact-section" id="contact">
-      <h2 class="section-title">Contact</h2>
-      <div class="contact-grid">
-        <a class="contact-card" href="mailto:mo@mheravi.ir">
-          <span class="contact-icon" aria-hidden="true">📧</span>
-          <div>
-            <strong>Email</strong>
-            <p>mo@mheravi.ir</p>
-          </div>
-        </a>
-        <a class="contact-card" href="https://mheravi.ir" target="_blank" rel="noopener">
-          <span class="contact-icon" aria-hidden="true">🌐</span>
-          <div>
-            <strong>Website</strong>
-            <p>mheravi.ir</p>
-          </div>
-        </a>
-        <a class="contact-card" href="https://scholar.google.com/citations?user=DYUEpmsAAAAJ&hl=en" target="_blank" rel="noopener">
-          <span class="contact-icon" aria-hidden="true">🎓</span>
-          <div>
-            <strong>Google Scholar</strong>
-            <p>Publication metrics and citations</p>
-          </div>
-        </a>
-        <a class="contact-card" href="https://orcid.org/0009-0007-2582-083X" target="_blank" rel="noopener">
-          <span class="contact-icon" aria-hidden="true">🧾</span>
-          <div>
-            <strong>ORCID</strong>
-            <p>0009-0007-2582-083X</p>
-          </div>
-        </a>
-        <a class="contact-card" href="https://www.linkedin.com/in/mheravi" target="_blank" rel="noopener">
-          <span class="contact-icon" aria-hidden="true">💼</span>
-          <div>
-            <strong>LinkedIn</strong>
-            <p>Professional updates &amp; collaborations</p>
-          </div>
-        </a>
-        <a class="contact-card" href="https://github.com/mheravi91" target="_blank" rel="noopener">
-          <span class="contact-icon" aria-hidden="true">💻</span>
-          <div>
-            <strong>GitHub</strong>
-            <p>Code, datasets, and tooling</p>
-          </div>
-        </a>
+    <section class="hero home-hero">
+      <p class="hero-eyebrow">Robotics & Simulation</p>
+      <h1 class="hero-title">Engineering reliable autonomy for excavation and human-centred robotics</h1>
+      <p class="hero-description">
+        Explore selected scholarly work, learn more about Mohammad’s background, and find the right channel to start a collaboration.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/papers">Browse papers</a>
+        <a class="btn btn-secondary" href="/about">About Mohammad</a>
+        <a class="btn btn-secondary" href="/contact">Get in touch</a>
       </div>
     </section>
   </main>

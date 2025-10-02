@@ -1,0 +1,59 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Mohammad Heravi',
+  jobTitle: 'Robotics & Simulation Researcher',
+  affiliation: {
+    '@type': 'Organization',
+    name: 'Tampere University',
+  },
+  url: 'https://papers.mheravi.ir/about',
+  sameAs: [
+    'https://scholar.google.com/citations?user=DYUEpmsAAAAJ&hl=en',
+    'https://orcid.org/0009-0007-2582-083X',
+    'https://mheravi.ir',
+    'https://github.com/mheravi91',
+    'https://www.linkedin.com/in/mheravi'
+  ],
+};
+---
+<BaseLayout
+  title="About Mohammad Heravi"
+  description="Background, research focus, and academic profile of Mohammad Heravi."
+  structuredData={structuredData}
+>
+  <main>
+    <section class="page-header">
+      <span class="section-heading">About</span>
+      <h1>Mohammad Heravi</h1>
+      <p class="hero-description">
+        Robotics researcher specialising in physics-informed simulation, autonomous excavation, and human-centred mechatronics.
+      </p>
+    </section>
+
+    <section class="section-shell about-section">
+      <div class="about-grid">
+        <div class="about-summary">
+          <p>
+            Mohammad Heravi builds dependable autonomy for earthmoving and industrial robotics by pairing physics-based simulation with machine learning and robust control. He is currently a doctoral researcher at Tampere University, focusing on physics-informed models that bridge high-fidelity simulators and field deployments.
+          </p>
+          <p>
+            His work spans excavation automation, wearable rehabilitation devices, and sensor fusion pipelines that remain reliable in harsh environments. Mohammad collaborates closely with industry partners to translate prototypes into operational systems and enjoys mentoring multidisciplinary teams.
+          </p>
+        </div>
+        <div class="about-resume">
+          <h2>Snapshot</h2>
+          <ul class="resume-list">
+            <li><strong>Tampere University</strong> — Doctoral Researcher in Intelligent Machines &nbsp;·&nbsp; 2021–present</li>
+            <li><strong>University of Tehran</strong> — M.Sc. in Mechanical Engineering &nbsp;·&nbsp; 2019</li>
+            <li><strong>Research focus</strong> — Physics-informed learning, excavation autonomy, wearable robotics</li>
+            <li><strong>Selected contributions</strong> — Open-access PINN models for rock-motion forecasting; EMG-driven rehabilitation exoskeleton design; Multi-rate sensor fusion for excavation robots</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

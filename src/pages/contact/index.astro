@@ -1,0 +1,80 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Mohammad Heravi',
+  email: 'mailto:mo@mheravi.ir',
+  sameAs: [
+    'https://mheravi.ir',
+    'https://scholar.google.com/citations?user=DYUEpmsAAAAJ&hl=en',
+    'https://orcid.org/0009-0007-2582-083X',
+    'https://www.linkedin.com/in/mheravi',
+    'https://github.com/mheravi91'
+  ],
+  url: 'https://papers.mheravi.ir/contact',
+};
+---
+<BaseLayout
+  title="Contact Mohammad Heravi"
+  description="Reach Mohammad Heravi via email, website, Google Scholar, ORCID, LinkedIn, or GitHub."
+  structuredData={structuredData}
+>
+  <main>
+    <section class="page-header">
+      <span class="section-heading">Contact</span>
+      <h1>Let’s collaborate</h1>
+      <p class="hero-description">
+        Choose the channel that fits your enquiry—academic collaborations, industrial projects, or media requests.
+      </p>
+    </section>
+
+    <section class="section-shell contact-section">
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:mo@mheravi.ir">
+          <span class="contact-icon" aria-hidden="true">📧</span>
+          <div>
+            <strong>Email</strong>
+            <p>mo@mheravi.ir</p>
+          </div>
+        </a>
+        <a class="contact-card" href="https://mheravi.ir" target="_blank" rel="noopener">
+          <span class="contact-icon" aria-hidden="true">🌐</span>
+          <div>
+            <strong>Website</strong>
+            <p>mheravi.ir</p>
+          </div>
+        </a>
+        <a class="contact-card" href="https://scholar.google.com/citations?user=DYUEpmsAAAAJ&hl=en" target="_blank" rel="noopener">
+          <span class="contact-icon" aria-hidden="true">🎓</span>
+          <div>
+            <strong>Google Scholar</strong>
+            <p>Publication metrics and citations</p>
+          </div>
+        </a>
+        <a class="contact-card" href="https://orcid.org/0009-0007-2582-083X" target="_blank" rel="noopener">
+          <span class="contact-icon" aria-hidden="true">🧾</span>
+          <div>
+            <strong>ORCID</strong>
+            <p>0009-0007-2582-083X</p>
+          </div>
+        </a>
+        <a class="contact-card" href="https://www.linkedin.com/in/mheravi" target="_blank" rel="noopener">
+          <span class="contact-icon" aria-hidden="true">💼</span>
+          <div>
+            <strong>LinkedIn</strong>
+            <p>Professional updates &amp; collaborations</p>
+          </div>
+        </a>
+        <a class="contact-card" href="https://github.com/mheravi91" target="_blank" rel="noopener">
+          <span class="contact-icon" aria-hidden="true">💻</span>
+          <div>
+            <strong>GitHub</strong>
+            <p>Code, datasets, and tooling</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

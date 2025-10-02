@@ -1,0 +1,43 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import PaperCard from '~/components/PaperCard.astro';
+import { getCollection } from 'astro:content';
+
+const papers = await getCollection('papers');
+const orderedPapers = [...papers].sort((a, b) => b.data.year - a.data.year);
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Mohammad Heravi — Publications',
+  itemListElement: orderedPapers.map((entry, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: `https://papers.mheravi.ir/papers/${entry.slug}/`,
+    name: entry.data.title,
+  })),
+};
+---
+<BaseLayout
+  title="Publications — Mohammad Heravi"
+  description="Peer-reviewed papers and resources authored by Mohammad Heravi on robotics, simulation, and rehabilitation systems."
+  structuredData={structuredData}
+>
+  <main>
+    <section class="page-header">
+      <span class="section-heading">Publications</span>
+      <h1>Papers</h1>
+      <p class="hero-description">
+        Curated selection of conference and journal publications spanning physics-informed simulation, excavation autonomy, and human-assistive robotics.
+      </p>
+    </section>
+
+    <section class="section-shell">
+      <div class="paper-grid">
+        {orderedPapers.map((entry) => (
+          <PaperCard entry={entry} />
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
