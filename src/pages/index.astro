@@ -17,7 +17,9 @@ const structuredData = {
     name: 'Tampere University',
   },
   sameAs: [
-    'https://scholar.google.com/citations?user=0X8z1aUAAAAJ',
+    'https://scholar.google.com/citations?user=DYUEpmsAAAAJ&hl=en',
+    'https://orcid.org/0009-0007-2582-083X',
+    'https://mheravi.ir',
     'https://github.com/mheravi91',
     'https://www.linkedin.com/in/mheravi'
   ],
@@ -27,59 +29,15 @@ const structuredData = {
 title="Mohammad Heravi — Robotics & Simulation Research"
 description="Professional research homepage for Mohammad Heravi, featuring work on physics-informed learning, excavation autonomy, and robotics publications."
 structuredData={structuredData}
+showHeader={false}
 >
   <main>
-    <section class="hero" id="home">
-      <p class="hero-eyebrow">Robotics & Simulation</p>
-      <h1 class="hero-title">Engineering reliable autonomy for excavation and heavy industry</h1>
-      <p class="hero-description">
-        I combine physics-based simulation, machine learning, and field robotics to deliver robust automation for demanding earthmoving and construction environments. Explore curated papers, project highlights, and resources for collaboration.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#papers">Browse papers</a>
-        <a class="btn btn-secondary" href="https://scholar.google.com/citations?user=0X8z1aUAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-      </div>
-    </section>
-
-    <section class="section-shell" id="highlights">
-      <span class="section-heading">Highlights</span>
-      <h2 class="section-title">Impact at a glance</h2>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <strong>10+</strong>
-          <span>Peer-reviewed publications spanning robotics, simulation, and control.</span>
-        </div>
-        <div class="stat-card">
-          <strong>3</strong>
-          <span>Physics-informed toolchains deployed in live excavation trials.</span>
-        </div>
-        <div class="stat-card">
-          <strong>120+</strong>
-          <span>Citations across robotics and automation venues.</span>
-        </div>
-      </div>
-    </section>
-
     <section class="section-shell" id="papers">
-      <span class="section-heading">Publications</span>
-      <h2 class="section-title">Selected papers & resources</h2>
+      <h1 class="section-title">Papers</h1>
       <div class="paper-grid">
         {orderedPapers.map((entry) => (
           <PaperCard entry={entry} />
         ))}
-      </div>
-    </section>
-
-    <section class="section-shell" id="about">
-      <span class="section-heading">About</span>
-      <h2 class="section-title">Simulation grounded, field tested</h2>
-      <div class="grid">
-        <p>
-          My work bridges digital twins, machine learning, and control systems for heavy-duty robotics. I focus on methods that remain stable when sensors degrade or environments shift—common realities on excavation sites.
-        </p>
-        <p>
-          Beyond publications, I collaborate with industry to translate physics-informed insights into operational autonomy. I enjoy mentoring multidisciplinary teams and crafting reproducible toolchains that others can build upon.
-        </p>
       </div>
     </section>
   </main>

@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   canonical?: string;
   structuredData?: Record<string, unknown>;
+  showHeader?: boolean;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   description = 'Official research homepage for Mohammad Heravi: publications, highlights, and collaboration notes.',
   canonical,
   structuredData,
+  showHeader = true,
 } = Astro.props as Props;
 
 const canonicalUrl = canonical ?? Astro.url?.href ?? 'https://papers.mheravi.ir/';
@@ -45,7 +47,7 @@ const canonicalUrl = canonical ?? Astro.url?.href ?? 'https://papers.mheravi.ir/
   <body>
     <div class="wrapper">
       <div class="site-shell">
-        <SiteHeader />
+        {showHeader && <SiteHeader />}
         <slot />
         <SiteFooter />
       </div>
