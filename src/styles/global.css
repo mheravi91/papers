@@ -52,6 +52,28 @@ main {
   display: block;
 }
 
+main.page-main {
+  display: grid;
+  gap: clamp(48px, 6vw, 72px);
+}
+
+main.page-main > section,
+main.page-main > .page-header {
+  margin: 0;
+}
+
+.page-main--list {
+  gap: clamp(40px, 5vw, 68px);
+}
+
+.page-main--contact {
+  gap: clamp(40px, 5vw, 64px);
+}
+
+.page-main--article {
+  gap: clamp(36px, 4.5vw, 56px);
+}
+
 .wrapper {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -196,12 +218,12 @@ main {
 .paper-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 28px;
+  gap: 32px;
 }
 
 .paper-card {
   display: grid;
-  gap: 18px;
+  gap: 20px;
   padding: 30px;
   border-radius: var(--radius-md);
   background: var(--surface);
@@ -269,7 +291,7 @@ main {
 
 .section-shell {
   display: grid;
-  gap: 16px;
+  gap: 24px;
 }
 
 .about-section {
@@ -331,6 +353,13 @@ main {
   gap: 12px;
 }
 
+.about-actions {
+  margin-top: 24px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .contact-section {
   background: var(--surface);
   border-radius: var(--radius-lg);
@@ -342,7 +371,7 @@ main {
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
 .contact-card {
@@ -507,7 +536,7 @@ main {
 
 .page-header {
   display: grid;
-  gap: 16px;
+  gap: 20px;
   padding: 48px 56px;
   border-radius: var(--radius-lg);
   background: var(--surface);
@@ -582,6 +611,10 @@ main {
   .about-grid {
     grid-template-columns: 1fr;
     gap: 28px;
+  }
+
+  main.page-main {
+    gap: 42px;
   }
 }
 .featured-links span {
