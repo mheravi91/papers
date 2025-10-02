@@ -906,6 +906,108 @@ main.page-main > .page-header {
     justify-items: center;
   }
 }
+
+@media (max-width: 560px) {
+  .wrapper {
+    padding: 28px 16px 60px;
+  }
+
+  .paper-hero {
+    padding: 28px 20px;
+    gap: 20px;
+  }
+
+  .paper-hero-main {
+    gap: 16px;
+  }
+
+  .paper-hero-main h1 {
+    font-size: clamp(1.8rem, 8vw, 2.3rem);
+  }
+
+  .paper-hero-media {
+    min-height: 180px;
+  }
+
+  .paper-hero-media figcaption {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .paper-authors {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .paper-authors li:not(:first-child)::before {
+    display: none;
+  }
+
+  .paper-hero-meta {
+    padding: 22px 20px;
+    gap: 12px;
+  }
+
+  .paper-meta-row {
+    gap: 4px;
+  }
+
+  .paper-links {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .paper-link {
+    width: 100%;
+  }
+
+  .rich-text {
+    padding: 26px 22px;
+  }
+}
+
+@media (max-width: 420px) {
+  .paper-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .paper-card {
+    padding: 18px;
+    gap: 12px;
+  }
+
+  .paper-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .paper-card p {
+    font-size: 0.95rem;
+  }
+
+  .meta-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+  }
+
+  .featured-links a,
+  .featured-links span {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 12px;
+    margin-right: 8px;
+    margin-top: 8px;
+    font-size: 0.9rem;
+  }
+
+  .paper-card--featured {
+    padding: 16px;
+  }
+}
 .featured-links span {
   display: inline-flex;
   align-items: center;
