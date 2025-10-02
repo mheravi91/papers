@@ -375,17 +375,18 @@ main.page-main > .page-header {
 }
 
 .contact-card {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 14px;
-  align-items: center;
-  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 26px 24px;
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 22px 46px -32px rgba(15, 23, 42, 0.55);
   color: var(--text);
   transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.2s ease;
+  min-height: 176px;
 }
 
 .contact-card:hover {
@@ -394,23 +395,30 @@ main.page-main > .page-header {
   box-shadow: 0 30px 56px -34px rgba(48, 79, 254, 0.55);
 }
 
+.contact-card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .contact-card strong {
-  font-size: 1rem;
+  font-size: 1.05rem;
 }
 
 .contact-card p {
-  margin: 4px 0 0;
+  margin: 0;
   color: var(--text-muted);
   font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .contact-icon {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   color: var(--accent-contrast);
   box-shadow: 0 18px 38px -28px rgba(31, 45, 110, 0.55);
@@ -615,6 +623,18 @@ main.page-main > .page-header {
 
   main.page-main {
     gap: 42px;
+  }
+
+  .contact-card {
+    padding: 22px 20px;
+    gap: 14px;
+    min-height: auto;
+  }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
   }
 }
 .featured-links span {
