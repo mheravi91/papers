@@ -17,3 +17,4 @@ tmp/
 # Environment files
 .env
 .env.*
+.astro/

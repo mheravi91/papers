@@ -1,0 +1,53 @@
+---
+interface LinkItem {
+  label: string;
+  url: string;
+  external?: boolean;
+}
+
+const { entry } = Astro.props as {
+  entry: {
+    slug: string;
+    data: {
+      title: string;
+      summary: string;
+      venue: string;
+      year: number;
+      authors: string[];
+      tags?: string[];
+      links?: LinkItem[];
+      featured?: boolean;
+      highlight?: string;
+    };
+  };
+};
+
+const { title, summary, venue, year, authors, tags = [], links = [], featured, highlight } = entry.data;
+const detailHref = `/papers/${entry.slug}/`;
+---
+<article class={`paper-card${featured ? ' paper-card--featured' : ''}`}>
+  <div>
+    <small>{year}</small>
+    <h3><a href={detailHref}>{title}</a></h3>
+    <p>{summary}</p>
+    {highlight && (<p class="paper-highlight">{highlight}</p>)}
+  </div>
+  <ul class="meta-list">
+    <li><strong>Venue</strong> {venue}</li>
+    <li><strong>Authors</strong> {authors.join(' · ')}</li>
+  </ul>
+  {tags.length > 0 && (
+    <div class="featured-links">
+      {tags.map((tag) => (
+        <span>{tag}</span>
+      ))}
+    </div>
+  )}
+  {links.length > 0 && (
+    <div class="featured-links">
+      {links.map((item) => (
+        <a href={item.url} target={item.external !== false ? '_blank' : undefined} rel={item.external !== false ? 'noopener' : undefined}>{item.label}</a>
+      ))}
+    </div>
+  )}
+</article>

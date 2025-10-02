@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+import SiteHeader from '~/components/SiteHeader.astro';
+import SiteFooter from '~/components/SiteFooter.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  structuredData?: Record<string, unknown>;
+}
+
+const {
+  title = 'Mohammad Heravi — Research Portfolio',
+  description = 'Official research homepage for Mohammad Heravi: publications, highlights, and collaboration notes.',
+  canonical,
+  structuredData,
+} = Astro.props as Props;
+
+const canonicalUrl = canonical ?? Astro.url?.href ?? 'https://papers.mheravi.ir/';
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Mohammad Heravi — Research" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {structuredData && (
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
+    )}
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="site-shell">
+        <SiteHeader />
+        <slot />
+        <SiteFooter />
+      </div>
+    </div>
+  </body>
+</html>

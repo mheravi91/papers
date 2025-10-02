@@ -1,42 +1,75 @@
-# DOI shortlinks & paper landing pages
+# Mohammad Heravi — Research Website
 
-This repository powers [papers.mheravi.ir](https://papers.mheravi.ir) and doubles as a reusable template for anyone who wants lightweight DOI landing pages on GitHub Pages.
+Astro-based personal research hub deployed on GitHub Pages. The homepage at [papers.mheravi.ir](https://papers.mheravi.ir) presents a curated list of publications, highlights, and metadata-rich landing pages for each paper.
 
-## Features
-- Friendly landing pages for selected DOIs with structured metadata and copy‑ready BibTeX.
-- Automatic redirect for every other DOI path via `404.html → https://doi.org/<path>`.
-- Pure static assets — no build step, works out of the box with GitHub Pages.
-
-## Quick start
-1. Fork or clone the repository.
-2. Decide on the domain you want to serve from:
-   - To reuse `papers.mheravi.ir`, keep the existing `CNAME` file and make sure your DNS points a CNAME record at `<YOUR_GITHUB_USERNAME>.github.io`.
-   - To use a different domain (or the default `*.github.io` URL), edit or delete the `CNAME` file accordingly.
-3. Push to your GitHub repository and enable **Settings → Pages → Deploy from main branch**. Enforce HTTPS once the certificate is issued.
-
-## Add a paper landing page
-Create a folder that matches the DOI path exactly and drop an `index.html` inside, for example:
-```
-10.1234/some.journal.2025.42/index.html
-```
-If no folder exists for a requested DOI, the visitor is redirected to the original record on doi.org automatically.
-
-Each `index.html` can include:
-- A short summary/abstract for the paper.
-- Author list and publication venue.
-- Links to the official DOI, PDF, preprint, slides, code, etc.
-- Structured metadata (`application/ld+json`) to improve SEO and scholarly indexing.
+## Stack & features
+- [Astro](https://astro.build) with content collections for paper entries and semantic SEO defaults.
+- Responsive, typography-driven layout with polished hero, stats, and publication grid.
+- Dedicated detail pages for every paper, complete with Schema.org `ScholarlyArticle` markup.
+- Automatic sitemap and robots.txt for search engines, HTTPS-friendly custom domain via `public/CNAME`.
 
 ## Repository structure
 ```
-├── index.html                # Root landing page with examples
-├── 404.html                  # DOI redirect fallback
-├── CNAME                     # Custom domain (edit/remove if you change it)
-├── static/style.css          # Shared styling
-└── <DOI>/index.html          # Custom landing page for that DOI
+├── astro.config.mjs          # Astro configuration (site URL, sitemap integration)
+├── src/
+│   ├── components/           # Header, footer, reusable card components
+│   ├── content/
+│   │   └── papers/           # Markdown sources for each publication
+│   ├── layouts/              # Base layout + paper layout with SEO helpers
+│   ├── pages/                # Homepage, paper routes, 404 page
+│   └── styles/               # Global design tokens and CSS
+├── public/                   # Static assets copied verbatim (CNAME, favicon, robots.txt)
+└── package.json              # Astro scripts and dependencies
 ```
 
-## Contributing & license
-Issues and pull requests are welcome for improvements or additional features.
+## Local development
+1. Install dependencies (requires Node 18.17+):
+   ```bash
+   npm install
+   ```
+2. Launch the dev server with hot reload:
+   ```bash
+   npm run dev
+   ```
+3. Build the production bundle for GitHub Pages:
+   ```bash
+   npm run build
+   ```
+4. Preview the built site locally (optional):
+   ```bash
+   npm run preview
+   ```
 
-Licensed under MIT — customize freely.
+## Managing publications
+- Add a new Markdown file in `src/content/papers/` named after the desired slug (e.g. `my-new-paper.md`).
+- Frontmatter schema:
+  ```yaml
+  ---
+  title: "Paper title"
+  summary: "Short synopsis for cards and meta tags."
+  venue: "Conference or journal"
+  year: 2024
+  authors:
+    - First Author
+    - Second Author
+  tags: ["Category", "Discipline"]    # optional
+  doi: "10.1234/example.2024.42"        # optional
+  links:
+    - label: "Official DOI"
+      url: "https://doi.org/10.1234/example.2024.42"
+  featured: true                         # optional — adds accent styling on the homepage
+  highlight: "One-line impact sentence." # optional
+  ---
+  
+  ## Abstract
+  Main body content supports Markdown, code fences, lists, etc.
+  ```
+- The homepage automatically lists entries chronologically (newest first) and generates routes at `/papers/<slug>/`.
+
+## Deployment notes
+- GitHub Pages should build the Astro site via GitHub Actions or a custom workflow. Configure the action to run `npm install && npm run build` and publish the `dist/` directory.
+- Keep `public/CNAME` in place to retain the custom domain configuration.
+- The sitemap is generated during `astro build` (served at `/sitemap-index.xml`). Robots directives live in `public/robots.txt`.
+
+## License
+Released under the MIT License — see `LICENSE` for details.

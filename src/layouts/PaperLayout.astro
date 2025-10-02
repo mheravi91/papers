@@ -1,0 +1,90 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+const { entry } = Astro.props as { entry: CollectionEntry<'papers'> };
+const { data } = entry;
+const {
+  title,
+  summary,
+  venue,
+  year,
+  authors,
+  tags = [],
+  doi,
+  links = [],
+} = data;
+
+const { Content } = await entry.render();
+const [primaryLink, ...secondaryLinks] = links;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ScholarlyArticle',
+  headline: title,
+  name: title,
+  author: authors.map((name) => ({ '@type': 'Person', name })),
+  description: summary,
+  datePublished: year ? `${year}` : undefined,
+  url: `https://papers.mheravi.ir/papers/${entry.slug}/`,
+  identifier: doi
+    ? [{
+        '@type': 'PropertyValue',
+        propertyID: 'DOI',
+        value: doi,
+        url: `https://doi.org/${doi}`,
+      }]
+    : undefined,
+  isPartOf: venue
+    ? {
+        '@type': 'PublicationVolume',
+        name: venue,
+      }
+    : undefined,
+};
+---
+<BaseLayout
+  title={`${title} — Mohammad Heravi`}
+  description={summary}
+  canonical={`https://papers.mheravi.ir/papers/${entry.slug}/`}
+  structuredData={structuredData}
+>
+  <main>
+    <section class="page-header">
+      <span class="section-heading">Scholarly work</span>
+      <h1>{title}</h1>
+      <p class="hero-description">{summary}</p>
+      <ul class="meta-list">
+        <li><strong>Year</strong> {year}</li>
+        <li><strong>Venue</strong> {venue}</li>
+        <li><strong>Authors</strong> {authors.join(' · ')}</li>
+        {doi && (
+          <li><strong>DOI</strong> <a href={`https://doi.org/${doi}`} target="_blank" rel="noopener">{doi}</a></li>
+        )}
+      </ul>
+      {tags.length > 0 && (
+        <div class="featured-links">
+          {tags.map((tag) => (
+            <span>{tag}</span>
+          ))}
+        </div>
+      )}
+      {primaryLink && (
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={primaryLink.url} target={primaryLink.external !== false ? '_blank' : undefined} rel={primaryLink.external !== false ? 'noopener' : undefined}>
+            {primaryLink.label}
+          </a>
+          {secondaryLinks.map((link) => (
+            <a class="btn btn-secondary" href={link.url} target={link.external !== false ? '_blank' : undefined} rel={link.external !== false ? 'noopener' : undefined}>
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </section>
+
+    <section class="rich-text">
+      <Content />
+    </section>
+  </main>
+</BaseLayout>
