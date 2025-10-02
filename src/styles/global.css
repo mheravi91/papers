@@ -60,6 +60,47 @@
   --max-width: 1120px;
 }
 
+/* Prevent common causes of horizontal overflow on mobile */
+html, body {
+  -webkit-text-size-adjust: 100%;
+}
+
+.wrapper {
+  overflow-x: hidden;
+}
+
+/* Allow grid/flex children to shrink below their content width */
+.site-shell,
+.site-shell > *,
+.page-main,
+.paper-hero,
+.paper-hero > *,
+.paper-hero-main,
+.paper-hero-meta,
+.paper-hero-media,
+.paper-grid,
+.paper-card,
+.rich-text {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Constrain media and long words */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, p, li, dd, dt {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+pre {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 * {
   box-sizing: border-box;
 }
