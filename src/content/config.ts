@@ -6,6 +6,12 @@ const linkSchema = z.object({
   external: z.boolean().optional(),
 });
 
+const mediaSchema = z.object({
+  src: z.string(),
+  alt: z.string().optional(),
+  caption: z.string().optional(),
+});
+
 const papers = defineCollection({
   type: 'content',
   schema: z.object({
@@ -19,6 +25,7 @@ const papers = defineCollection({
     links: z.array(linkSchema).optional(),
     featured: z.boolean().optional(),
     highlight: z.string().optional(),
+    heroMedia: mediaSchema.optional(),
   }),
 });
 

@@ -271,9 +271,9 @@ main.page-main > .page-header {
   color: var(--text-muted);
 }
 
-.paper-authors li::before {
-  content: '';
-  margin: 0;
+.paper-authors li {
+  display: inline-flex;
+  align-items: center;
 }
 
 .paper-authors li:not(:first-child)::before {
@@ -287,6 +287,47 @@ main.page-main > .page-header {
   color: var(--text-muted);
   font-size: 1.05rem;
   line-height: 1.7;
+}
+
+.paper-hero-media {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: var(--shadow-subtle);
+  background: radial-gradient(circle at 20% 20%, rgba(48, 79, 254, 0.15), transparent 60%), rgba(15, 23, 42, 0.04);
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paper-hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.paper-hero-media figcaption {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.65);
+  color: #fff;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.paper-hero-media--placeholder {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
 }
 
 .paper-hero-meta {
@@ -331,7 +372,8 @@ main.page-main > .page-header {
 
 .paper-links {
   display: grid;
-  gap: 10px;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 }
 
 .paper-link {

@@ -13,6 +13,7 @@ const {
   tags = [],
   doi,
   links = [],
+  heroMedia,
 } = data;
 
 const { Content } = await entry.render();
@@ -54,6 +55,16 @@ const structuredData = {
       <div class="paper-hero-main">
         <span class="section-heading">Scholarly work</span>
         <h1>{title}</h1>
+        {heroMedia ? (
+          <figure class="paper-hero-media">
+            <img src={heroMedia.src} alt={heroMedia.alt ?? `${title} preview media`} loading="lazy" />
+            {heroMedia.caption && <figcaption>{heroMedia.caption}</figcaption>}
+          </figure>
+        ) : (
+          <div class="paper-hero-media paper-hero-media--placeholder">
+            <span>Preview media coming soon</span>
+          </div>
+        )}
         <ul class="paper-authors">
           {authors.map((author) => (
             <li>{author}</li>
