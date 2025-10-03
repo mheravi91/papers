@@ -18,6 +18,9 @@ const {
 
 const { Content } = await entry.render();
 const [primaryLink, ...secondaryLinks] = links;
+const actionLinks = [primaryLink, ...secondaryLinks].filter(Boolean);
+const eyebrow = [venue, year && `${year}`].filter(Boolean).join(' · ');
+const hasMeta = Boolean(venue || year || doi);
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -51,10 +54,41 @@ const structuredData = {
   structuredData={structuredData}
 >
   <main class="page-main page-main--article">
-    <section class="paper-hero">
-      <div class="paper-hero-main">
-        <span class="section-heading">Scholarly work</span>
-        <h1>{title}</h1>
+    <section class="paper-header">
+      <div class="paper-header-inner">
+        <div class="paper-header-meta">
+          {eyebrow && <span class="paper-eyebrow">{eyebrow}</span>}
+          <h1 class="paper-title">{title}</h1>
+          {authors.length > 0 && (
+            <ul class="paper-authors">
+              {authors.map((author) => (
+                <li>{author}</li>
+              ))}
+            </ul>
+          )}
+          <p class="paper-summary">{summary}</p>
+          {actionLinks.length > 0 && (
+            <div class="paper-actions">
+              {actionLinks.map((link) => (
+                <a
+                  class={`paper-action ${link === primaryLink ? 'paper-action--primary' : ''}`}
+                  href={link.url}
+                  target={link.external !== false ? '_blank' : undefined}
+                  rel={link.external !== false ? 'noopener' : undefined}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          )}
+          {tags.length > 0 && (
+            <ul class="paper-tags">
+              {tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          )}
+        </div>
         {heroMedia ? (
           <figure class="paper-hero-media">
             <img src={heroMedia.src} alt={heroMedia.alt ?? `${title} preview media`} loading="lazy" />
@@ -65,55 +99,33 @@ const structuredData = {
             <span>Preview media coming soon</span>
           </div>
         )}
-        <ul class="paper-authors">
-          {authors.map((author) => (
-            <li>{author}</li>
-          ))}
-        </ul>
-        <p class="paper-summary">{summary}</p>
-        {tags.length > 0 && (
-          <div class="featured-links">
-            {tags.map((tag) => (
-              <span>{tag}</span>
-            ))}
-          </div>
-        )}
       </div>
-      <aside class="paper-hero-meta">
-        <dl class="paper-meta-list">
-          <div class="paper-meta-row">
-            <dt>Venue</dt>
-            <dd>{venue}</dd>
-          </div>
-          <div class="paper-meta-row">
-            <dt>Year</dt>
-            <dd>{year}</dd>
-          </div>
-          {doi && (
-            <div class="paper-meta-row">
-              <dt>DOI</dt>
-              <dd><a href={`https://doi.org/${doi}`} target="_blank" rel="noopener">{doi}</a></dd>
-            </div>
-          )}
-          {links.length > 0 && (
-            <div class="paper-meta-row paper-meta-links">
-              <dt>Access</dt>
-              <dd>
-                <div class="paper-links">
-                  {[primaryLink, ...secondaryLinks].filter(Boolean).map((link) => (
-                    <a class={`paper-link ${link === primaryLink ? 'paper-link--primary' : ''}`} href={link.url} target={link.external !== false ? '_blank' : undefined} rel={link.external !== false ? 'noopener' : undefined}>
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
-              </dd>
-            </div>
-          )}
-        </dl>
-      </aside>
     </section>
 
-    <section class="rich-text">
+    {hasMeta && (
+      <section class="paper-meta">
+        {venue && (
+          <div class="paper-meta-card">
+            <span class="paper-meta-label">Venue</span>
+            <span class="paper-meta-value">{venue}</span>
+          </div>
+        )}
+        {year && (
+          <div class="paper-meta-card">
+            <span class="paper-meta-label">Year</span>
+            <span class="paper-meta-value">{year}</span>
+          </div>
+        )}
+        {doi && (
+          <div class="paper-meta-card">
+            <span class="paper-meta-label">DOI</span>
+            <a class="paper-meta-value" href={`https://doi.org/${doi}`} target="_blank" rel="noopener">{doi}</a>
+          </div>
+        )}
+      </section>
+    )}
+
+    <section class="paper-body rich-text">
       <Content />
     </section>
   </main>
